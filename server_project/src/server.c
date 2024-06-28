@@ -83,13 +83,13 @@ void *client_handler(void *arg) {
         buffer[bytes_read] = '\0';
         printf("Received command: %s\n", buffer);
 
-        if (strcmp(buffer, "get info\n") == 0) {
+        if (strcmp(buffer, "getInfo\n") == 0) {
             get_info(client_socket);
-        } else if (strcmp(buffer, "get number of partitions\n") == 0) {
+        } else if (strcmp(buffer, "getNumberOfPartitions\n") == 0) {
             get_number_of_partitions(client_socket);
-        } else if (strcmp(buffer, "get current kernel version\n") == 0) {
+        } else if (strcmp(buffer, "getCurrentKernelVersion\n") == 0) {
             get_current_kernel_version(client_socket);
-        } else if (strcmp(buffer, "sshd running\n") == 0) {
+        } else if (strcmp(buffer, "sshdRunning\n") == 0) {
             is_sshd_running(client_socket);
         } else {
             write(client_socket, "Invalid command\n", 16);
@@ -101,7 +101,7 @@ void *client_handler(void *arg) {
 }
 
 void get_info(int client_socket) {
-    const char *info = "Service Name: ExampleService\nVersion: 1.0.0\n";
+    const char *info = "Service Name: server\nVersion: 1.0.0\n";
     write(client_socket, info, strlen(info));
 }
 
